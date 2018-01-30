@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>弹出层组件</title>
+		<link rel="stylesheet" href="src/layer.css" />
+	</head>
+	<body>
+		<script src="src/layer.js"></script>
+		<script>
+			layer.popup({
+				title: '弹窗',
+				content: '<p>确定删除？</p>',
+				btns: [
+					{
+						text: '确定',
+						style: 'background:#1E9FFF;color:#fff;',
+						callback: function(){
+							console.log('确定')
+						}
+					},
+					{
+						text: '取消'
+					}
+				]
+			});
+		</script>
+	</body>
+</html>
