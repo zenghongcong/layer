@@ -45,7 +45,7 @@
 				btn = null,
 				html =
 				'<div class="layer-head ui-clear">'+
-					'<p>'+ option.title || '提示' +'</p>'+
+					'<p>'+ (option.title || '提示') +'</p>'+
 					'<a class="close" href="javascript:;">'+
 						'<img src="close.png" alt="关闭" />'+
 					'</a>'+
