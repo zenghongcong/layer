@@ -80,7 +80,11 @@
 			px = e.clientX;
 			py = e.clientY;
 		});
-		
+	}
+	
+	function createMoveMask(){
+		var moveMask = createElem('div', {class: 'ui-mask'});
+		layer.moveMask = moveMask;
 		layer.moveMask.addEventListener('mousemove', function(e){
 			var top = getNumberOfStyle(moveElem, 'top') + e.clientY - py,
 				left = getNumberOfStyle(moveElem, 'left') + e.clientX - px;
@@ -88,10 +92,10 @@
 			px = e.clientX;
 			py = e.clientY;
 		});
-			
 		layer.moveMask.addEventListener('mouseup', function(e){
 			this.style.display = 'none';
 		});
+		document.body.appendChild(moveMask);
 	}
 	
 	Layer.prototype = {
@@ -99,7 +103,6 @@
 		popup: function(option){
 			var id = this.zindex,
 				item = createElem('div', {class: 'ui-layer', style: 'z-index: '+ id +';'}),
-				moveMask = createElem('div', {class: 'ui-mask'}),
 				layerBtn = null,
 				btn = null,
 				html =
@@ -118,9 +121,6 @@
 			item.innerHTML = html;
 			document.body.appendChild(item);
 			
-			this.moveMask = moveMask;
-			document.body.appendChild(moveMask);
-			
 			layerBtn = item.querySelector('.layer-btn');
 			
 			option.btns.forEach(function(item){
@@ -132,6 +132,7 @@
 			
 			setPosition(item);
 			addClass(item, 'layer-show');
+			!this.moveMask && createMoveMask();
 			bindEvent(id);
 			this.zindex += 1;
 		},
