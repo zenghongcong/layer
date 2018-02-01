@@ -14,8 +14,9 @@ layer.popup({
 		{
 			text: '确定',
 			style: 'background:#1E9FFF;color:#fff;',
-			callback: function(){
-				console.log('确定')
+			callback: function(id){
+				//id: 弹窗id
+				console.log(id);
 			}
 		},
 		{
@@ -23,6 +24,10 @@ layer.popup({
 		}
 	]
 });
+
+layer.close(id); //删除单个弹窗
+
+layer.closeAll(); //删除所有弹窗
 ```
 ## 参数
 
